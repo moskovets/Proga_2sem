@@ -1,0 +1,1 @@
+drmemory -logdir d:\tmp\laba_1(part1) -- main_prog.exe
