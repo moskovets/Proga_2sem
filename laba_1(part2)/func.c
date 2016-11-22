@@ -86,7 +86,8 @@ void my_qsort(void *first, size_t number, size_t size, int (*comparator)(const v
         //char *tmp = malloc(size); //memory, за цикл вынести, char[size]
         memcpy(tmp, i, size);
         char *j;
-        memmove(f + (index + 1)* size, f + index * size, (i - f + index));
+        //printf("%d %d\n", (i - f), ((i - f) / size - index));
+        memmove(f + (index + 1) * size, f + index * size, ((i - f) - index * size));
         /*for (j = i; j > f + index * size; j -= size) //memmove
         {
             memcpy(j, j - size, size);

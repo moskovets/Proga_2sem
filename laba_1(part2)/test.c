@@ -256,6 +256,13 @@ int funccmp_mystruct(const void *val1, const void *val2)
     my_struct *b = (my_struct *) val2;
     return b->a + b->b - a->a - a->b;
 }
+/*int funccmp_double(const void *val1, const void *val2)
+{
+    double *a = (double *) val1;
+    double *b = (double *) val2;
+    return *a > *b;
+*/
+
 my_struct* form_array_from_struct(const int *arr, int n)
 {
     my_struct *a = malloc(n * sizeof(my_struct));
@@ -480,6 +487,6 @@ int main()
     test_filter();
     test_my_qsort_add();
     //printf("          n      qsort    my_qsort \n");
-    test_compare_time();
+    //test_compare_time();
     return 0;
 }

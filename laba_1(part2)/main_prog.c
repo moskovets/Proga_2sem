@@ -63,20 +63,24 @@ int main(int argc, char const **argv)
         FILE * f_out;
         f_out = fopen(argv[2], "w");
 
-        print_to_file(f_out, n, arr);
-
         if (f_out == NULL)
         {
             printf("Cannot open file for output\n");
             free(arr);
+            if (arr)
+                free(arr);
+            if (arr != arr_copy)
+                free(arr_copy);
             return 0;
         }
-        free(arr);
-        arr = NULL;
-        if (arr_copy)
-        {
+
+        print_to_file(f_out, n, arr);
+        //printf("n = %d\n", n);
+
+        if (arr)
+            free(arr);
+        if (arr != arr_copy)
             free(arr_copy);
-        }
         fclose(f_out);
     }
     return 0;
