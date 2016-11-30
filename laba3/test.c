@@ -93,11 +93,13 @@ void test_my_strdup()
 
 void test_replace_str()
 {
+    printf("\ntest_replace \n ");
+
     char *str, *substr, *repstr, *res, *r;
     int i;
 
     printf("test1 ");
-    str = "sdasdasd";
+    str =    "sdasdasd";
     substr = "asd";
     repstr = "dsa";
     i = 2;
@@ -107,7 +109,7 @@ void test_replace_str()
     free(r);
 
     printf("test2 ");
-    str = "aaaaaa";
+    str =    "aaaaaa";
     substr = "aaaa";
     repstr = "a";
     i = 2;
@@ -117,7 +119,7 @@ void test_replace_str()
     free(r);
 
     printf("test3 ");
-    str = "aaaaaa";
+    str =    "aaaaaa";
     substr = "aaaa";
     repstr = "";
     i = 2;
@@ -127,7 +129,7 @@ void test_replace_str()
     free(r);
 
     printf("test4 ");
-    str = "aaaaaa";
+    str =    "aaaaaa";
     substr = "aaaaaa";
     repstr = "bds";
     i = 0;
@@ -139,40 +141,44 @@ void test_replace_str()
 
 void test_replace_all_str()
 {
+    printf("\ntest_replace_all \n ");
+
     char *str, *substr, *repstr, *res, *r;
 
     printf("test1 ");
     str = "sdasdasd";
     substr = "asd";
     repstr = "dsa";
-    res = "sddsaasd";
+    res = "sddsadsa";
     r = replace_all(str, substr, repstr);
+//    printf("%s   %s\n", r, !strcmp(res, r) ? "OK" : "FAIL");
     printf("%s\n", !strcmp(res, r) ? "OK" : "FAIL");
     free(r);
 
     printf("test2 ");
-    str = "aaaaaaa";
+    str =    "aaaaaaa";
     substr = "aaaa";
     repstr = "a";
-    res = "aaaa";
+    res =    "aaaa";
     r = replace_all(str, substr, repstr);
     printf("%s\n", !strcmp(res, r) ? "OK" : "FAIL");
+//    printf("%s   %s\n", r, !strcmp(res, r) ? "OK" : "FAIL");
     free(r);
 
     printf("test3 ");
-    str = "aaaaaa";
+    str =    "aaaaaa";
     substr = "aaaa";
     repstr = "";
-    res = "aa";
+    res =    "aa";
     r = replace_all(str, substr, repstr);
     printf("%s\n", !strcmp(res, r) ? "OK" : "FAIL");
     free(r);
 
     printf("test4 ");
-    str = "aaaaaa";
+    str =    "aaaaaa";
     substr = "aaaaaa";
     repstr = "bds";
-    res = "bds";
+    res =    "bds";
     r = replace_all(str, substr, repstr);
     printf("%s\n", !strcmp(res, r) ? "OK" : "FAIL");
     free(r);
@@ -196,6 +202,34 @@ void test_replace_all_str()
     printf("%s\n", !strcmp(res, r) ? "OK" : "FAIL");
     free(r);
 
+    printf("test7 ");
+    str = "aaaaaa";
+    substr = "aa";
+    repstr = "aaaa";
+    res = "aaaaaaaaaaaa";
+    r = replace_all(str, substr, repstr);
+    printf("%s\n", !strcmp(res, r) ? "OK" : "FAIL");
+    free(r);
+
+    printf("test8 ");
+    str = "aaaaaa";
+    substr = "bb";
+    repstr = "cc";
+    res = "aaaaaa";
+    r = replace_all(str, substr, repstr);
+    printf("%s\n", !strcmp(res, r) ? "OK" : "FAIL");
+    free(r);
+
+
+    printf("test9 ");
+    str = "";
+    substr = "bb";
+    repstr = "cc";
+    res = "";
+    r = replace_all(str, substr, repstr);
+    printf("%s\n", !strcmp(res, r) ? "OK" : "FAIL");
+    free(r);
+
 }
 
 int for_test_search_str(const char *str, const char *substr)
@@ -209,6 +243,8 @@ int for_test_search_str(const char *str, const char *substr)
 }
 void test_search_str()
 {
+    printf("\ntest_search_str \n ");
+
     char *str, *substr;
 
     printf("test1 ");
@@ -247,7 +283,7 @@ int main()
 {
     //test_my_strchr();
     //test_my_strdup();
-    //test_search_str();
+    test_search_str();
     test_replace_str();
     test_replace_all_str();
 /*        double **matr;

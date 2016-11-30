@@ -2,6 +2,7 @@
 #define MYCSTRING_H_INCLUDED
 
 #include <stdlib.h>
+#include <string.h>
 //#include <assert.h>
 
 int my_strlen(const char *str);
