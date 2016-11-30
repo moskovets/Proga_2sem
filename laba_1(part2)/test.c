@@ -240,8 +240,9 @@ int for_test_my_qsort_add(void *arr, int n, size_t size, int (*comparator)(const
     memcpy(b, arr, n * size);
     my_qsort(a, n, size, comparator);
     qsort(b, n, size, comparator);
-    int ret = memcmp(a, b, n * size); //ret = 0 if a == b
 
+    int ret = memcmp(a, b, n * size); //ret = 0 if a == b
+    memcpy(arr, a, n*size);
     free(a);
     free(b);
     return !ret;
@@ -277,13 +278,22 @@ int funccmp_float(const void *val1, const void *val2)
 {
     float *a = (float *) val1;
     float *b = (float *) val2;
-    return *a - *b;
+    if(*a > *b)
+        return 1;
+    if(*a < *b)
+        return -1;
+    return 0;
 }
 
 void test_my_qsort_add()
 {
     printf("test_my_qsort_add\n");
     int n;
+    printf("test001 ");
+    float arr001[] = { 0.1, 0.4, 0.1, 0.2, 0.01, 0.0001 };
+    n = 6;
+    printf("%s\n", for_test_my_qsort_add(arr001, n, sizeof(float), &funccmp_float) ? "OK" : "FAIL");
+
     printf("test01 ");
     float arr01[] = { 1, 2, 3, 4, 5 };
     n = 5;
@@ -384,6 +394,12 @@ void test_filter()
     n = sizeof(arr4) / sizeof(int);
     res = 0;
     printf("%s\n", for_test_filter(arr4, NULL, n, res) ? "OK" : "FAIL");
+
+    printf("test4.0 ");
+    int arr40[] = { 1, 2 };
+    n = sizeof(arr40) / sizeof(int);
+    res = 0;
+    printf("%s\n", for_test_filter(arr40, NULL, n, res) ? "OK" : "FAIL");
 
     printf("test5 ");
     int arr5[] = { 2, 7, 5, 3, 1, 4, 0, 5, 0, 3 };
