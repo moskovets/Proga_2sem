@@ -21,8 +21,9 @@ int funccmp_Data(const void *val1, const void *val2)
 int scan_struct_from_file(FILE *f, Data *a)
 {
     assert(f);
-    if(fscanf(f, "%s %s %d", a->town_name, a->country_name, &(a->population)) != 3)
+    if(fscanf(f, "%s %s %d", (*a).town_name, (*a).country_name, &(a->population)) != 3)
         return 1;
+    //print_struct(a);
     return 0;
 }
 

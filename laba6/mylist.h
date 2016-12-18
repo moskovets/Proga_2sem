@@ -1,3 +1,6 @@
+#ifndef MYLIST_H_INCLUDED
+#define MYLIST_H_INCLUDED
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
@@ -24,4 +27,4 @@ void front_back_split(list *head, list **mid);
 // получает два упорядоченных списка и объединяет их в один.
 list *sorted_merge(list *a, list *b, int (*comparator)(const void *, const void *));
 void merge_sort(list **head, int (*comparator)(const void *, const void *));
-list *del_interval(list *head, int l, int r);
+#endif // MYLIST_H_INCLUDED

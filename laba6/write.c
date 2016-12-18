@@ -6,7 +6,8 @@ int from_file_to_database(FILE *f, Data **arr, const int n)
     assert(f);
     for(int i = 0; i < n; i++)
     {
-        if(scan_struct_from_file(f, arr[i]))
+        //if(!arr[i])
+        if(scan_struct_from_file(f, &(*arr)[i]))
             return 1;
     }
     return 0;
